@@ -7,13 +7,13 @@ console.log(factorial(7));
 Создать функцию multiply, которая будет принимать любое количество чисел и возвращать их произведение: multiply(1,2,3) = 6 (1*2*3)
 Если нет ни одного аргумента, вернуть ноль: multiply() // 0
  */
-function multiply(firstNumber, ...numberArray) {
-    if (!firstNumber)
+function multiply(...numberArray) {
+    if (numberArray.length == 0) {
         return 0;
-    let result = firstNumber;
-    for (let i = 0; i < numberArray.length; i++) {
-        result *= numberArray[i];
     }
+    var result = numberArray.reduce(function (res, current) {
+        return res * current;
+    }, 1);
     return result;
 }
 let num1 = multiply(5, 3, 4);

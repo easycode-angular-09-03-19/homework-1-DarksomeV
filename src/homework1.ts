@@ -9,13 +9,11 @@ console.log(factorial(7));
 Создать функцию multiply, которая будет принимать любое количество чисел и возвращать их произведение: multiply(1,2,3) = 6 (1*2*3)
 Если нет ни одного аргумента, вернуть ноль: multiply() // 0
  */
-
-function multiply(firstNumber?: number, ...numberArray: number[]): number {
-    if (!firstNumber) return 0;
-    let result = firstNumber;
-    for (let i = 0; i < numberArray.length; i++) {
-        result *= numberArray[i];
-    }
+function multiply(...numberArray: number[]): number {
+    if (numberArray.length == 0) {return 0}
+    var result = numberArray.reduce(function(res, current) {
+        return res * current;
+    }, 1);
     return result;
 }
 
@@ -34,7 +32,7 @@ console.log(reverse('test'));
 
 //Создать интерфейс Админа.
 interface Admin {
-    name: string;УфіУ
+    name: string;
     email: string;
     password: string;
     type?: string;
@@ -50,9 +48,9 @@ abstract class Car {
     ) {
     }
 
-    public abstract drive(kilometers: number);
+    public abstract drive(kilometers: number): string | void;
 
-    public abstract refuel(fuel: number);
+    public abstract refuel(fuel: number): void;
 }
 
 class MyCar extends Car {
